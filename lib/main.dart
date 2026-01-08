@@ -13,12 +13,14 @@ import 'todo/todo_page.dart';
 import 'todo/todo_provider.dart';
 import 'album_manager/album_manager_page.dart';
 import 'album_manager/album_manager_provider.dart';
+import 'library/library_provider.dart';
+import 'library/library_view.dart';
 
 void main() {
   runApp(
     // 1. アプリ全体で CounterProvider を使えるように「注入」する
     ChangeNotifierProvider(
-      create: (context) => AlbumManagerProvider(),
+      create: (context) => LibraryProvider(),
       child: const MyApp(),
     ),
   );
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // 2. 最初に表示する画面として CounterPage を指定する
-      home: AlbumManagerPage(),
+      home: LibraryListPage(),
     );
   }
 }
