@@ -6,6 +6,7 @@ import 'message_provider.dart';
 class EditPage extends StatefulWidget {
   const EditPage({super.key});
 
+  @override
   State<EditPage> createState() => _EditPageState();
 }
 
@@ -27,7 +28,7 @@ class _EditPageState extends State<EditPage> {
         children: [
           TextField(
             controller: _controller,
-            decoration: InputDecoration(labelText: 'メッセージを入力'),
+            decoration: const InputDecoration(labelText: 'メッセージを入力'),
           ),
           ElevatedButton(
             child: Text('保存する'),
