@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/messenger/main_page.dart';
 import 'package:provider/provider.dart';
 // 自分で作ったファイルをインポートします
 import 'counter/counter_provider.dart';
 import 'counter/counter_page.dart';
+import 'messenger/message_provider.dart';
 import 'profile_manager/profile_manager_page.dart';
 import 'profile_manager/profile_manager_provider.dart';
 import 'temperature/temperature_page.dart';
@@ -14,7 +16,7 @@ void main() {
   runApp(
     // 1. アプリ全体で CounterProvider を使えるように「注入」する
     ChangeNotifierProvider(
-      create: (context) => ProfileManagerProvider(),
+      create: (context) => MessageProvider(),
       child: const MyApp(),
     ),
   );
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // 2. 最初に表示する画面として CounterPage を指定する
-      home: ProfileManagerPage(),
+      home: MainPage(),
     );
   }
 }
