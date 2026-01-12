@@ -19,12 +19,14 @@ import 'seat_booking/seat_booking_page_view.dart';
 import 'seat_booking/seat_booking_provider.dart';
 import 'cart/cart_page_view.dart';
 import 'cart/cart_provider.dart';
+import 'event_manager/event_provider.dart';
+import 'event_manager/event_page_view.dart';
 
 void main() {
   runApp(
     // 1. アプリ全体で CounterProvider を使えるように「注入」する
     ChangeNotifierProvider(
-      create: (context) => CartProvider(),
+      create: (context) => EventProvider(),
       child: const MyApp(),
     ),
   );
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // 2. 最初に表示する画面として CounterPage を指定する
-      home: CartPageView(),
+      home: EventPageView(),
     );
   }
 }
