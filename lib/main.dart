@@ -21,12 +21,14 @@ import 'cart/cart_page_view.dart';
 import 'cart/cart_provider.dart';
 import 'event_manager/event_provider.dart';
 import 'event_manager/event_page_view.dart';
+import 'smart_expense_tracker/expense_tracker_page_view.dart';
+import 'smart_expense_tracker/expense_tracker_provider.dart';
 
 void main() {
   runApp(
     // 1. アプリ全体で CounterProvider を使えるように「注入」する
     ChangeNotifierProvider(
-      create: (context) => EventProvider(),
+      create: (context) => ExpenseTrackerProvider(),
       child: const MyApp(),
     ),
   );
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // 2. 最初に表示する画面として CounterPage を指定する
-      home: EventPageView(),
+      home: ExpenseTrackerPageView(),
     );
   }
 }

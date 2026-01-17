@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'event.dart';
 import 'event_state.dart';
 
 class EventProvider extends ChangeNotifier {
