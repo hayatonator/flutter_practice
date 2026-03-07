@@ -1,37 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/messenger/main_page.dart';
-import 'package:provider/provider.dart';
-// 自分で作ったファイルをインポートします
-import 'counter/counter_provider.dart';
-import 'counter/counter_page.dart';
-import 'messenger/message_provider.dart';
-import 'profile_manager/profile_manager_page.dart';
-import 'profile_manager/profile_manager_provider.dart';
-import 'temperature/temperature_page.dart';
-import 'temperature/temperature_provider.dart';
-import 'todo/todo_page.dart';
-import 'todo/todo_provider.dart';
-import 'album_manager/album_manager_page.dart';
-import 'album_manager/album_manager_provider.dart';
-import 'library/library_provider.dart';
-import 'library/library_view.dart';
-import 'seat_booking/seat_booking_page_view.dart';
-import 'seat_booking/seat_booking_provider.dart';
-import 'cart/cart_page_view.dart';
-import 'cart/cart_provider.dart';
-import 'event_manager/event_provider.dart';
-import 'event_manager/event_page_view.dart';
-import 'smart_expense_tracker/expense_tracker_page_view.dart';
-import 'smart_expense_tracker/expense_tracker_provider.dart';
+import 'challenge_list.dart';
 
 void main() {
-  runApp(
-    // 1. アプリ全体で CounterProvider を使えるように「注入」する
-    ChangeNotifierProvider(
-      create: (context) => ExpenseTrackerProvider(),
-      child: const MyApp(),
-    ),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -39,9 +10,37 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // 2. 最初に表示する画面として CounterPage を指定する
-      home: ExpenseTrackerPageView(),
+    return const MaterialApp(
+      home: ChallengeMenuPage(),
+    );
+  }
+}
+
+class ChallengeMenuPage extends StatelessWidget {
+  const ChallengeMenuPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Flutter練習')),
+      body: ListView.builder(
+        itemCount: challengeList.length,
+        itemBuilder: (context, index) {
+          final entry = challengeList[index];
+          return ListTile(
+            leading: Text(
+              '${index + 1}',
+              style: const TextStyle(color: Colors.grey),
+            ),
+            title: Text(entry.name),
+            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => entry.build()),
+            ),
+          );
+        },
+      ),
     );
   }
 }
